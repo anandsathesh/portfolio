@@ -101,7 +101,7 @@
         header {
             background: var(--gradient-primary);
             color: white;
-            padding: 6rem 0;
+            padding: 6rem 2rem;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -109,6 +109,20 @@
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 4rem 1rem;
+                min-height: 70vh;
+            }
+        }
+
+        @media (max-width: 320px) {
+            header {
+                padding: 3rem 0.5rem;
+                min-height: 65vh;
+            }
         }
 
         header::before {
@@ -978,6 +992,88 @@
             animation: glow 2s ease-in-out infinite alternate;
         }
 
+        /* Notification System */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10000;
+            max-width: 400px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            animation: slideInRight 0.3s ease-out;
+            border-left: 4px solid;
+        }
+
+        .notification-success {
+            background: rgba(34, 197, 94, 0.1);
+            border-left-color: #22c55e;
+            color: #16a34a;
+        }
+
+        .notification-error {
+            background: rgba(239, 68, 68, 0.1);
+            border-left-color: #ef4444;
+            color: #dc2626;
+        }
+
+        .notification-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            font-weight: 500;
+        }
+
+        .notification-content i {
+            font-size: 1.2rem;
+        }
+
+        .notification-close {
+            background: none;
+            border: none;
+            color: inherit;
+            cursor: pointer;
+            padding: 0.2rem;
+            margin-left: auto;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+
+        .notification-close:hover {
+            opacity: 1;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Form validation styles */
+        .form-group input:invalid,
+        .form-group textarea:invalid {
+            border-color: #ef4444;
+        }
+
+        .form-group input:valid,
+        .form-group textarea:valid {
+            border-color: #22c55e;
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
         /* Loading Screen */
         .loading-screen {
             position: fixed;
@@ -1104,7 +1200,8 @@
                 left: -100%;
                 width: 100%;
                 height: calc(100vh - 70px);
-                background-color: white;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(20px);
                 flex-direction: column;
                 align-items: center;
                 padding: 2rem 0;
@@ -1126,6 +1223,212 @@
 
             .section-title h2 {
                 font-size: 1.8rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .tagline {
+                font-size: 1.1rem;
+            }
+
+            .profile-img {
+                width: 140px;
+                height: 140px;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Extra Small Screens - 320px and below */
+        @media (max-width: 480px) {
+            nav {
+                margin: 0 10px;
+                border-radius: 0 0 15px 15px;
+            }
+
+            .nav-container {
+                padding: 0.8rem 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            .profile-img {
+                width: 120px;
+                height: 120px;
+            }
+
+            .social-links {
+                gap: 1rem;
+            }
+
+            .social-links a {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            section {
+                padding: 2rem 0.8rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .skills {
+                gap: 0.5rem;
+            }
+
+            .skill {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .project-info {
+                padding: 1rem;
+            }
+
+            .project-links {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .project-links a {
+                justify-content: center;
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-info,
+            .contact-form {
+                padding: 1.5rem;
+            }
+
+            /* Footer improvements for small screens */
+            footer {
+                padding: 1.5rem 0.8rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 0.8rem;
+                margin: 1rem 0;
+            }
+
+            .footer-links a {
+                font-size: 0.9rem;
+                padding: 0.5rem;
+            }
+
+            .copyright {
+                font-size: 0.8rem;
+                line-height: 1.4;
+            }
+
+            /* Timeline adjustments */
+            .timeline-item {
+                padding-left: 50px;
+                padding-right: 15px;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item::after {
+                left: 11px !important;
+            }
+
+            .timeline-content {
+                padding: 1rem;
+            }
+
+            /* Experience items */
+            .experience-item {
+                padding: 1.5rem;
+            }
+
+            .experience-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            /* Form improvements */
+            .form-group input,
+            .form-group textarea {
+                padding: 0.8rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .submit-btn {
+                width: 100%;
+                padding: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Ultra Small Screens - 320px */
+        @media (max-width: 320px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.3rem;
+            }
+
+            .skill {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.75rem;
+            }
+
+            .project-info h3 {
+                font-size: 1.1rem;
+            }
+
+            .project-info p {
+                font-size: 0.9rem;
+            }
+
+            .project-tag {
+                padding: 0.2rem 0.6rem;
+                font-size: 0.7rem;
+            }
+
+            footer {
+                padding: 1rem 0.5rem;
+            }
+
+            .copyright {
+                font-size: 0.75rem;
             }
         }
 
@@ -1600,24 +1903,27 @@
                 </div>
             </div>
             <div class="contact-form">
-                <form id="contactForm">
+                <form id="contactForm" novalidate>
                     <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" placeholder="Your full name" required minlength="2" maxlength="50">
                     </div>
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
                     </div>
                     <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="subject" required>
+                        <label for="subject">Subject *</label>
+                        <input type="text" id="subject" name="subject" placeholder="Brief subject of your message" required minlength="5" maxlength="100">
                     </div>
                     <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" required></textarea>
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" placeholder="Tell me about your project, collaboration ideas, or any questions you have..." required minlength="10" maxlength="1000" rows="6"></textarea>
                     </div>
-                    <button type="submit" class="submit-btn">Send Message</button>
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Message
+                    </button>
                 </form>
             </div>
         </div>
@@ -1721,25 +2027,150 @@
             darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
         }
         
-        // Form Submission
+        // Secure Email Configuration
+        // Email sending is now handled by our secure serverless function at /api/send-email
+        // This approach keeps all API keys hidden on the server and never exposes them to the browser
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Portfolio contact form initialized with secure serverless function');
+        });
+        
+        // Form Submission with EmailJS
         const contactForm = document.getElementById('contactForm');
+        const submitBtn = document.querySelector('.submit-btn');
         
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
+            // Basic form validation
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const subject = document.getElementById('subject').value.trim();
+            const message = document.getElementById('message').value.trim();
             
-            // Here you would typically send the form data to a server
-            // For this example, we'll just log it and show an alert
-            console.log({ name, email, subject, message });
+            if (!name || !email || !subject || !message) {
+                showNotification('Please fill in all required fields.', 'error');
+                return;
+            }
             
-            alert('Thank you for your message! I will get back to you soon.');
-            contactForm.reset();
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showNotification('Please enter a valid email address.', 'error');
+                return;
+            }
+            
+            // Change button text to show loading
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+            
+            // Prepare email data for our secure serverless function
+            const formData = {
+                name: name,
+                email: email,
+                message: `Subject: ${subject}\n\nMessage:\n${message}`
+            };
+            
+            // Check if we're running on file:// protocol (local file)
+            if (window.location.protocol === 'file:') {
+                console.log('Running on file:// protocol - serverless function not available');
+                showNotification('⚠️ To test the contact form, please run the portfolio on a local server. Open terminal and run: python -m http.server 3000, then visit http://localhost:3000', 'error');
+                
+                // Reset button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                return;
+            }
+            
+            // Check if we're running locally (localhost) - simulate email for testing
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                console.log('Running locally - simulating email send for testing');
+                
+                // Simulate a delay like a real API call
+                setTimeout(() => {
+                    console.log('📧 SIMULATED EMAIL SENT:', formData);
+                    showNotification('🎉 [LOCAL TEST] Your message would be sent successfully! Deploy to Vercel to enable real email sending.', 'success');
+                    
+                    // Reset form
+                    contactForm.reset();
+                    
+                    // Reset button
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }, 1500);
+                
+                return;
+            }
+            
+            // Send email using our secure serverless function
+            console.log('Sending email via secure serverless function...');
+            
+            fetch('/api/send-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then((data) => {
+                    console.log('SUCCESS!', data);
+                    
+                    // Show success message
+                    showNotification('🎉 Thank you! Your message has been sent successfully. I will get back to you within 24 hours!', 'success');
+                    
+                    // Reset form
+                    contactForm.reset();
+                    
+                    // Reset button
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                })
+                .catch((error) => {
+                    console.error('Send Email Error:', error);
+                    
+                    // Show error message
+                    let errorMessage = 'Sorry, there was an error sending your message. Please try again or contact me directly at anandsathesh22@gmail.com';
+                    
+                    showNotification(errorMessage, 'error');
+                    
+                    // Reset button
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                });
         });
+        
+        // Notification function
+        function showNotification(message, type) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.innerHTML = `
+                <div class="notification-content">
+                    <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+                    <span>${message}</span>
+                    <button class="notification-close" onclick="this.parentElement.parentElement.remove()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            `;
+            
+            // Add to body
+            document.body.appendChild(notification);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.remove();
+                }
+            }, 5000);
+        }
         
         // Animate elements on scroll
         const animateOnScroll = () => {
